@@ -14,10 +14,13 @@ taskCltr.create = async (req, res) => {
     console.log(task);
 
     // https: await axios.post('http://localhost:5004/events', {
-    https: await axios.post('http://event-bus-u25c.onrender.com', {
-      type: 'TaskCreated',
-      payload: task,
-    });
+    https: await axios.post(
+      'http://event-bus-u25c.onrender.com/events',
+      {
+        type: 'TaskCreated',
+        payload: task,
+      }
+    );
     res.json(task);
   } catch (error) {
     res.status(500).json({error});
